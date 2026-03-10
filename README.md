@@ -3,10 +3,10 @@ Demo per una action che fa il deployment di un sito PHP, aggiornando i parametri
 
 Per ridurre all'osso l'esempio ci sono due file:
 
-connessione.php :  memorizza i parametri di connessione, in locale saranno i classici di xampp localhost,root ... )
+`connessione.php` :  memorizza i parametri di connessione, in locale saranno i classici di xampp localhost,root ... )
 quando si fa l'upload devoono essere cambiati con i parametri dell'hosting (es. ftp.altervista miouser passwordftp..)
 
-index.php: include il file connessione.php per configurarsi, nella demo stampa i valori (tanto nei secrets sono inventati )
+`index.php`: include il file connessione.php per configurarsi, nella demo stampa i valori (tanto nei secrets sono inventati )
 
 si potrebbe fare a mano ogni volta che faccimo l'upload dal pannello di controllo di altervusta 
 ma gli lo facciamo fare a github action...
