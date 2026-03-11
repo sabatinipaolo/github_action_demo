@@ -11,18 +11,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Genera connessione.php con i dati di hosting 
-      # dalla shell di ubuntu github action lancia dei comandi
-      # in particolare fa degli echo reindirizzando l'output 
-      # sul file connessione.php ( ti ricordi lo scorso anno ? )
-        run: |
-          echo "<?php" > sito/connessione.php
-          echo \$HOST=\"${{ secrets.APP_DB_HOST }}\"\; >> sito/connessione.php
-          echo \$USER=\"${{ secrets.APP_DB_USER }}\"\; >> sito/connessione.php
-          echo \$PASSWORD=\"${{ secrets.APP_DB_PASSWORD }}\"\; >> sito/connessione.php
-          echo \$DBNAME=\"${{ secrets.APP_DB_NAME }}\"\; >> sito/connessione.php
-          echo "?>" >> sito/connessione.php
-
       - name: FTP Deploy
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
@@ -31,4 +19,6 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./sito/
           server-dir: htdocs/sito/   
+          exclude: |
+             connessione.php
           dangerous-clean-slate: false
